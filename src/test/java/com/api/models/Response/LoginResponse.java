@@ -10,6 +10,11 @@ public class LoginResponse {
 	private String username;
 	private String email;
 	private List<String >roles;
+	
+	public LoginResponse() {
+	
+	}
+	
 	public LoginResponse(String token, String type, int id, String username, String email, List<String> roles) {
 		super();
 		this.token = token;

@@ -17,8 +17,16 @@ public class BaseService {
 		
 	}
 	
-	public Response postRequest(Object payload, String Endpoint) {
-		return requestSpecification.contentType(ContentType.JSON).body(payload).post(Endpoint);
+	public void setAuthToken(String token) {
+		requestSpecification.header("Authorization", "Bearer " + token);
+	}
+	
+	public Response postRequest(Object payload, String endpoint) {
+		return requestSpecification.contentType(ContentType.JSON).body(payload).post(endpoint);
+	}
+	
+	public Response getRequest(String endpoint) {
+		return requestSpecification.get(endpoint);
 	}
 	
 
