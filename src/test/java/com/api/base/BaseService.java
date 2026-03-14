@@ -29,5 +29,9 @@ public class BaseService {
 		return requestSpecification.get(endpoint);
 	}
 	
+	public Response putrequest(Object payload, String endpoint) {
+		return requestSpecification.contentType(ContentType.JSON).body(payload).put(endpoint);
+	}
+	
 
 }
