@@ -6,6 +6,9 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  schedule:
+    - cron: 00 18 * * *
+    - cron: 00 3 * * *
 
 jobs:
   build:
@@ -22,6 +25,11 @@ jobs:
         cache: maven
     - name: Execute Tests
       run: mvn clean test -Dsuite=testng
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.2.2
+      with:
+        name: Logs
+        path: logs/
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
