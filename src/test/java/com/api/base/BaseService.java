@@ -2,6 +2,8 @@ package com.api.base;
 
 import static io.restassured.RestAssured.*;
 
+import com.api.filters.LoggingFilter;
+
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -13,7 +15,7 @@ public class BaseService {
 	private RequestSpecification requestSpecification; 
 	
 	public BaseService() {
-		requestSpecification = given().baseUri(BASE_URL);
+		requestSpecification = given().baseUri(BASE_URL).filter(new LoggingFilter());
 		
 	}
 	
